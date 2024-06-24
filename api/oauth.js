@@ -6,7 +6,7 @@ const session = require("express-session");
 const MemoryStore = require("memorystore")(session);
 const qs = require("qs");
 require("dotenv").config();
-const FRONTURL = process.env.NEXT_PUBLIC_FRONTURL;
+const FRONTURL = process.env.FRONTURL;
 
 const maxAge = 1000 * 60 * 60;
 router.use(
