@@ -29,8 +29,8 @@ app.get("/", (req, res) => {
   res.send("Hello, Express");
 });
 app.use("/api", require("./question"));
-// app.use("/api", require("./api/like"));
-// app.use("/api/oauth", require("./api/oauth"));
+// app.use("/api", require("./like"));
+// app.use("/api/oauth", require("./oauth"));
 // app.use(
 //   "/api-docs",
 //   swaggerUi.serve,
