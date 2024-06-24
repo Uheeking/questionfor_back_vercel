@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 app.use(
   cors({
     origin: function (origin, callback) {
-      const allowedOrigins = ["https://question-for.vercel.app"];
+      const allowedOrigins = ["http://localhost:3000", "https://question-for.vercel.app"];
       if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true);
       } else {
@@ -22,6 +22,16 @@ app.use(
     optionsSuccessStatus: 200,
   })
 );
+var whitelist = ["http://localhost:3000", "https://question-for.vercel.app"];
+var corsOptionsDelegate = function (req, callback) {
+  var corsOptions;
+  if (whitelist.indexOf(req.header('Origin')) !== -1) {
+    corsOptions = { origin: true } // reflect (enable) the requested origin in the CORS response
+  } else {
+    corsOptions = { origin: false } // disable CORS for this request
+  }
+  callback(null, corsOptions) // callback expects two parameters: error and options
+}
 
 
 const PORT = process.env.PORT || 3002;
@@ -32,7 +42,7 @@ app.get("/", (req, res) => {
 
 // Importing routes
 // app.use("/api", require("./proxysettings"));
-app.use("/api", require("./question"));
+app.use("/api", cors(corsOptionsDelegate), require("./question"));
 app.use("/api", require("./like"));
 app.use("/api/oauth", require("./oauth"));
 
