@@ -3,8 +3,8 @@ const app = express();
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-const swaggerFile = require("./swaggerFile/swagger-output.json");
-const swaggerUi = require("swagger-ui-express");
+// const swaggerFile = require("./swaggerFile/swagger-output.json");
+// const swaggerUi = require("swagger-ui-express");
 require("dotenv").config();
 app.use(bodyParser.json());
 app.use(
@@ -28,14 +28,14 @@ app.set("port", process.env.PORT || 3002);
 app.get("/", (req, res) => {
   res.send("Hello, Express");
 });
-app.use("/api", require("./api/question"));
-app.use("/api", require("./api/like"));
-app.use("/api/oauth", require("./api/oauth"));
-app.use(
-  "/api-docs",
-  swaggerUi.serve,
-  swaggerUi.setup(swaggerFile, { explorer: true })
-);
+// app.use("/api", require("./api/question"));
+// app.use("/api", require("./api/like"));
+// app.use("/api/oauth", require("./api/oauth"));
+// app.use(
+//   "/api-docs",
+//   swaggerUi.serve,
+//   swaggerUi.setup(swaggerFile, { explorer: true })
+// );
 mongoose
   .connect(process.env.DB,  {})
   .then(() => console.log("connect to database"));
