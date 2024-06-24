@@ -23,19 +23,6 @@ app.use(
   })
 );
 
-// Optional: Handle preflight requests globally if needed
-app.options('*', cors({
-  origin: function (origin, callback) {
-    const allowedOrigins = ["http://localhost:3000", "https://question-for.vercel.app"];
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-  credentials: true,
-  optionsSuccessStatus: 200,
-}));
 
 const PORT = process.env.PORT || 3002;
 
@@ -44,6 +31,7 @@ app.get("/", (req, res) => {
 });
 
 // Importing routes
+// app.use("/api", require("./proxysettings"));
 app.use("/api", require("./question"));
 app.use("/api", require("./like"));
 app.use("/api/oauth", require("./oauth"));
