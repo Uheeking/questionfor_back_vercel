@@ -28,7 +28,7 @@ app.set("port", process.env.PORT || 3002);
 app.get("/", (req, res) => {
   res.send("Hello, Express");
 });
-// app.use("/api", require("./api/question"));
+app.use("/api", require("./question"));
 // app.use("/api", require("./api/like"));
 // app.use("/api/oauth", require("./api/oauth"));
 // app.use(
