@@ -6,6 +6,7 @@ const session = require("express-session");
 const MemoryStore = require("memorystore")(session);
 const qs = require("qs");
 require("dotenv").config();
+const FRONTURL = process.env.NEXT_PUBLIC_FRONTURL;
 
 const maxAge = 1000 * 60 * 60;
 router.use(
@@ -70,7 +71,7 @@ router.get("/callback/kakao", async (req, res) => {
       name: nickname,
     };
 
-    return res.redirect("http://localhost:3000/?id=" + id);
+    return res.redirect(`${FRONTURL}/?id=` + id);
   } catch (error) {
     console.error("Error in Kakao OAuth callback:", error.message);
     res.status(500).json({ error: "Internal Server Error" });
