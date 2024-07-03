@@ -22,29 +22,15 @@ app.use(
   })
 );
 
-<<<<<<< HEAD
 const PORT = process.env.PORT || 3002;
-=======
-const PORT = process.env.PORT;
 app.set("port", process.env.PORT || 3002);
->>>>>>> parent of 45c4eba (MODIFY : version1)
 
 app.get("/", (req, res) => {
   res.send("Hello, Express");
 });
-<<<<<<< HEAD
-
-
 app.use("/api", require("./question"));
 app.use("/api", require("./like"));
 app.use("/api/oauth", require("./oauth"));
-
-
-=======
-app.use("/api", require("./question"));
-app.use("/api", require("./like"));
-app.use("/api/oauth", require("./oauth"));
->>>>>>> parent of 45c4eba (MODIFY : version1)
 mongoose
   .connect(process.env.DB,  {})
   .then(() => console.log("connect to database"));
