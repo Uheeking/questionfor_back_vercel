@@ -3,15 +3,14 @@ const app = express();
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const swaggerFile = require("./swaggerFile/swagger-output.json");
+const swaggerUi = require("swagger-ui-express");
 require("dotenv").config();
-
-// Middleware setup
 app.use(bodyParser.json());
-
 app.use(
   cors({
     origin: function (origin, callback) {
-      const allowedOrigins = ["http://localhost:3000", "https://question-for.vercel.app"];
+      const allowedOrigins = ["http://localhost:3000", "https://question-for.vercel.app/"]; // Add other allowed origins if needed
       if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true);
       } else {
@@ -23,33 +22,27 @@ app.use(
   })
 );
 
-
-const PORT = process.env.PORT || 3002;
+const PORT = process.env.PORT;
+app.set("port", process.env.PORT || 3002);
 
 app.get("/", (req, res) => {
   res.send("Hello, Express");
 });
-
-// Importing routes
-// app.use("/api", require("./proxysettings"));
-app.use("/api", cors(corsOptionsDelegate), require("./question"));
-app.use("/api", require("./like"));
-app.use("/api/oauth", require("./oauth"));
-
-// Swagger setup (commented out in your original code)
+// app.use("/api/test", require("./api/test"));
+app.use("/api", require("./api/question"));
+app.use("/api", require("./api/like"));
+app.use("/api/oauth", require("./api/oauth"));
 // app.use(
 //   "/api-docs",
 //   swaggerUi.serve,
 //   swaggerUi.setup(swaggerFile, { explorer: true })
 // );
-
 mongoose
-  .connect(process.env.DB, {})
-  .then(() => console.log("Connected to database"))
-  .catch(err => console.error("Database connection error:", err));
+  .connect(process.env.DB,  {})
+  .then(() => console.log("connect to database"));
 
 app.listen(PORT, () => {
-  console.log(`${PORT}번 포트에서 대기 중`);
+  console.log(PORT, "번 포트에서 대기 중");
 });
 
 module.exports = app;
