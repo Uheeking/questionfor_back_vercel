@@ -4,7 +4,14 @@
         {
             "source": "/(.*)",
             "destination": "/api"
-        }
+        },{
+            "source": "/api/:path*",
+            "destination": "https://question-for.vercel.app/:path*"
+          },
+          {
+            "source": "/api/:path*/",
+            "destination": "https://question-for.vercel.app/:path*/"
+          }
     ],
     "headers": [
     {
