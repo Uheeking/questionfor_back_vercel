@@ -4,14 +4,13 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 require("dotenv").config();
-
-// Middleware setup
 app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true }))
 
 app.use(
   cors({
     origin: function (origin, callback) {
-      const allowedOrigins = ["http://localhost:3000", "https://question-for.vercel.app"];
+      const allowedOrigins = ["http://localhost:3000", "https://question-for.vercel.app/"]; // Add other allowed origins if needed
       if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true);
       } else {
@@ -23,11 +22,17 @@ app.use(
   })
 );
 
+<<<<<<< HEAD
 const PORT = process.env.PORT || 3002;
+=======
+const PORT = process.env.PORT;
+app.set("port", process.env.PORT || 3002);
+>>>>>>> parent of 45c4eba (MODIFY : version1)
 
 app.get("/", (req, res) => {
   res.send("Hello, Express");
 });
+<<<<<<< HEAD
 
 
 app.use("/api", require("./question"));
@@ -35,13 +40,17 @@ app.use("/api", require("./like"));
 app.use("/api/oauth", require("./oauth"));
 
 
+=======
+app.use("/api", require("./question"));
+app.use("/api", require("./like"));
+app.use("/api/oauth", require("./oauth"));
+>>>>>>> parent of 45c4eba (MODIFY : version1)
 mongoose
-  .connect(process.env.DB, {})
-  .then(() => console.log("Connected to database"))
-  .catch(err => console.error("Database connection error:", err));
+  .connect(process.env.DB,  {})
+  .then(() => console.log("connect to database"));
 
 app.listen(PORT, () => {
-  console.log(`${PORT}번 포트에서 대기 중`);
+  console.log(PORT, "번 포트에서 대기 중");
 });
 
 module.exports = app;
