@@ -2,16 +2,9 @@
     "version": 2,
     "rewrites": [
         {
-            "source": "/(.*)",
-            "destination": "/api"
-        },{
             "source": "/api/:path*",
-            "destination": "https://question-for.vercel.app/:path*"
-          },
-          {
-            "source": "/api/:path*/",
-            "destination": "https://question-for.vercel.app/:path*/"
-          }
+            "destination": "https://new-express-project-smoky.vercel.app/api/:path*"
+        }
     ],
     "headers": [
     {
