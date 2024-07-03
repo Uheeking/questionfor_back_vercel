@@ -7,19 +7,10 @@
         }
     ],
     "routes": [
-        {
-            "src": "/(.*)",
-            "dest": "/api",
-            "methods": [
-                "GET",
-                "POST",
-                "PUT",
-                "PATCH",
-                "DELETE",
-                "OPTIONS"
-            ]
-        }
-    ],
+    { "src": "/question", "dest": "/question.js" },
+    { "src": "/like", "dest": "/like.js" },
+    { "src": "/oauth)", "dest": "/oauth.js" }
+  ],
     "headers": [
     {
       "source": "/api/(.*)",
