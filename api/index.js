@@ -5,6 +5,8 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 require("dotenv").config();
 app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true }))
+
 app.use(
   cors({
     origin: function (origin, callback) {
