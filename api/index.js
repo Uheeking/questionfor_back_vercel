@@ -4,13 +4,14 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 require("dotenv").config();
+
+// Middleware setup
 app.use(bodyParser.json());
-app.use(express.urlencoded({ extended: true }))
 
 app.use(
   cors({
     origin: function (origin, callback) {
-      const allowedOrigins = ["http://localhost:3000", "https://question-for.vercel.app/"]; // Add other allowed origins if needed
+      const allowedOrigins = ["http://localhost:3000", "https://question-for.vercel.app"];
       if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true);
       } else {
@@ -21,22 +22,44 @@ app.use(
     optionsSuccessStatus: 200,
   })
 );
+var whitelist = ["http://localhost:3000", "https://question-for.vercel.app"];
+var corsOptionsDelegate = function (req, callback) {
+  var corsOptions;
+  if (whitelist.indexOf(req.header('Origin')) !== -1) {
+    corsOptions = { origin: true } // reflect (enable) the requested origin in the CORS response
+  } else {
+    corsOptions = { origin: false } // disable CORS for this request
+  }
+  callback(null, corsOptions) // callback expects two parameters: error and options
+}
 
-const PORT = process.env.PORT;
-app.set("port", process.env.PORT || 3002);
+
+const PORT = process.env.PORT || 3002;
 
 app.get("/", (req, res) => {
   res.send("Hello, Express");
 });
-app.use("/api", require("./question"));
+
+// Importing routes
+// app.use("/api", require("./proxysettings"));
+app.use("/api", cors(corsOptionsDelegate), require("./question"));
 app.use("/api", require("./like"));
 app.use("/api/oauth", require("./oauth"));
+
+// Swagger setup (commented out in your original code)
+// app.use(
+//   "/api-docs",
+//   swaggerUi.serve,
+//   swaggerUi.setup(swaggerFile, { explorer: true })
+// );
+
 mongoose
-  .connect(process.env.DB,  {})
-  .then(() => console.log("connect to database"));
+  .connect(process.env.DB, {})
+  .then(() => console.log("Connected to database"))
+  .catch(err => console.error("Database connection error:", err));
 
 app.listen(PORT, () => {
-  console.log(PORT, "번 포트에서 대기 중");
+  console.log(`${PORT}번 포트에서 대기 중`);
 });
 
 module.exports = app;
