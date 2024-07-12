@@ -3,7 +3,7 @@
     "rewrites": [
         {
             "source": "/(.*)",
-            "destination": "/api"
+            "destination": "https://new-express-project-smoky.vercel.app/"
         }
     ],
     "headers": [
