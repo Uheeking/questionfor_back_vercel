@@ -2,8 +2,12 @@
     "version": 2,
     "rewrites": [
         {
-            "source": "/(.*)",
-            "destination": "https://new-express-project-smoky.vercel.app/"
+            "source": "/api/:path*",
+            "destination": "https://new-express-project-smoky.vercel.app/:path*"
+        },
+        {
+            "source": "/api/:path*/",
+            "destination": "https://new-express-project-smoky.vercel.app/:path*/"
         }
     ],
     "headers": [
