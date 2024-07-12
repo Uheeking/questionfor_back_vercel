@@ -12,9 +12,12 @@
             "destination": "/api"
         },
         {
-            "source": "/api/question",
-            "destination": "/api/question.js"
-        }
+            "functions": {
+              "api/*.js": {
+                "runtime": "nodejs@20.14.7"
+              }
+            }
+          }
     ],
     "headers": [
         {
