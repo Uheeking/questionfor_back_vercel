@@ -7,7 +7,15 @@
         },
         {
             "source": "/api/(.*)",
-            "destination": "/api/*"
+            "destination": "/api/oauth.js"
+        },
+        {
+            "source": "/api/(.*)",
+            "destination": "/api/like.js"
+        },
+        {
+            "source": "/api/(.*)",
+            "destination": "/api/question.js"
         }
     ],
     "headers": [
