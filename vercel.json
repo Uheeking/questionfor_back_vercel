@@ -6,15 +6,15 @@
             "destination": "/api"
         },
         {
-            "source": "/api/(.*)",
+            "source": "/api/oauth/(.*)",
             "destination": "/api/oauth.js"
         },
         {
-            "source": "/api/(.*)",
+            "source": "/api/like/(.*)",
             "destination": "/api/like.js"
         },
         {
-            "source": "/api/(.*)",
+            "source": "/api/question/(.*)",
             "destination": "/api/question.js"
         }
     ],
