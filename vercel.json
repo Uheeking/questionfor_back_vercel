@@ -1,19 +1,15 @@
 {
     "version": 2,
     "rewrites": [
-    {
-      "source": "/api/like",
-      "destination": "https://new-express-project-smoky.vercel.app/api/like"
-    },
-    {
-      "source": "/api/question",
-      "destination": "https://new-express-project-smoky.vercel.app/api/question"
-    },
-    {
-      "source": "/api/:path*",
-      "destination": "https://new-express-project-smoky.vercel.app/api/:path*"
-    }
-  ],
+        {
+            "source": "/(.*)",
+            "destination": "/api"
+        },
+        {
+            "source": "/api/(.*)",
+            "destination": "/api/*"
+        }
+    ],
     "headers": [
         {
             "source": "/api/(.*)",
