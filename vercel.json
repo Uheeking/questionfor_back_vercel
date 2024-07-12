@@ -1,21 +1,15 @@
 {
     "version": 2,
-    "rewrites": [
+    "builds": [
         {
-            "source": "/(.*)",
-            "destination": "/api"
-        },
+            "src": "./index.js",
+            "use": "@vercel/node"
+        }
+    ],
+    "routes": [
         {
-            "source": "/api/oauth/(.*)",
-            "destination": "/api/oauth.js"
-        },
-        {
-            "source": "/api/like/(.*)",
-            "destination": "/api/like.js"
-        },
-        {
-            "source": "/api/question/(.*)",
-            "destination": "/api/question.js"
+            "src": "/(.*)",
+            "dest": "/"
         }
     ],
     "headers": [
