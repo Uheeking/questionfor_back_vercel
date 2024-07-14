@@ -9,7 +9,6 @@ router.get("/", async (req, res) => {
 router.get("/question", async (req, res) => {
   try {
     const question = await QuestionItem.find();
-    console.log("please,,,,,");
     res.json(question);
   } catch (err) {
     res.status(500).json({ error: "Could not retrieve question." });
