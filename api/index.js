@@ -32,6 +32,8 @@ app.set("port", process.env.PORT || 3002);
 app.get("/", (req, res) => {
   res.send("Hello, Express");
 });
+app.use("/test", require("./test"));
+
 app.use("/api/question", question);
 app.use("/api", require("./like"));
 app.use("/api/oauth", require("./oauth"));
