@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const QuestionItem = require("../Models/question");
 
-router.post("/question", async (req, res) => {
+router.post("/", async (req, res) => {
   //  #swagger.tags = ['Question API']
   //  #swagger.summary = '질문 등록하기'
   //  #swagger.description = 'Uheeking에 대한 질문 등록하기입니다. '
@@ -15,7 +15,7 @@ router.post("/question", async (req, res) => {
   }
 });
 
-router.get("/question", async (req, res) => {
+router.get("/", async (req, res) => {
   //  #swagger.tags = ['Question API']
   //  #swagger.summary = '질문 가져오기'
   //  #swagger.description = 'Uheeking에 대한 질문을 가져옵니다.
@@ -27,7 +27,7 @@ router.get("/question", async (req, res) => {
   }
 });
 
-router.patch("/question/:id", async (req, res) => {
+router.patch("/:id", async (req, res) => {
   //  #swagger.tags = ['Question API']
   //  #swagger.summary = 'id별 질문 답변 등록하기'
   //  #swagger.description = 'id별 Uheeking에 대한 질문 답변 등록하기입니다.
@@ -46,7 +46,7 @@ router.patch("/question/:id", async (req, res) => {
   }
 });
 
-router.delete("/question/:id", async (req, res) => {
+router.delete("/:id", async (req, res) => {
   //  #swagger.tags = ['Question API']
   //  #swagger.summary = '질문 삭제하기'
   //  #swagger.description = 'Uheeking에 대한 질문을 삭제합니다.

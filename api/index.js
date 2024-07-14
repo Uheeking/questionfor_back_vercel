@@ -3,14 +3,18 @@ const app = express();
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const question = require("./question");
 require("dotenv").config();
 app.use(bodyParser.json());
-app.use(express.urlencoded({ extended: true }))
+app.use(express.urlencoded({ extended: true }));
 
 app.use(
   cors({
     origin: function (origin, callback) {
-      const allowedOrigins = ["http://localhost:3000", "https://question-for.vercel.app/"]; // Add other allowed origins if needed
+      const allowedOrigins = [
+        "http://localhost:3000",
+        "https://question-for.vercel.app/",
+      ]; // Add other allowed origins if needed
       if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true);
       } else {
@@ -28,11 +32,11 @@ app.set("port", process.env.PORT || 3002);
 app.get("/", (req, res) => {
   res.send("Hello, Express");
 });
-app.use("/api", require("./question"));
+app.use("/api/question", question);
 app.use("/api", require("./like"));
 app.use("/api/oauth", require("./oauth"));
 mongoose
-  .connect(process.env.DB,  {})
+  .connect(process.env.DB, {})
   .then(() => console.log("connect to database"));
 
 app.listen(PORT, () => {
@@ -40,6 +44,3 @@ app.listen(PORT, () => {
 });
 
 module.exports = app;
-
-
-
