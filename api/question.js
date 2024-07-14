@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const QuestionItem = require("../Models/question");
-
 // router.post("/", async (req, res) => {
 //   try {
 //     const question = new QuestionItem(req.body);
@@ -11,6 +10,9 @@ const QuestionItem = require("../Models/question");
 //     res.status(500).json({ error: "Could not create a new question." });
 //   }
 // });
+router.get("/", async (req, res) => {
+  res.send("please show me your self");
+});
 
 router.get("/question", async (req, res) => {
   try {
