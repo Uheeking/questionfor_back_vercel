@@ -33,6 +33,7 @@ app.get("/", (req, res) => {
   res.send("Hello, Express");
 });
 app.use("/test", require("./test"));
+app.use("/test2", require("./test2"));
 
 app.use("/api", require("./question"));
 app.use("/api", require("./like"));
