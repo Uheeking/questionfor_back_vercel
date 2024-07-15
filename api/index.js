@@ -29,7 +29,7 @@ const PORT = process.env.PORT || 3002;
 app.set("port", process.env.PORT || 3002);
 
 app.get("/", (req, res) => {
-  res.text("Hello, Express");
+  res.send("Hello, Express");
 });
 app.use("/test", require("./test"))
 app.use("/question", require("./question"));
