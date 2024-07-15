@@ -16,8 +16,10 @@ router.post("/", async (req, res) => {
 router.get("/", async (req, res) => {
   try {
     const question = await QuestionItem.find();
+    console.log(question);
     res.json(question);
   } catch (err) {
+    console.log(err);
     res.status(500).json({ error: "Could not retrieve question." });
   }
 });
