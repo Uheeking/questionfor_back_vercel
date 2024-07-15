@@ -13,7 +13,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.get("/question", async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const question = await QuestionItem.find();
     res.json(question);

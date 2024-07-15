@@ -35,7 +35,7 @@ app.get("/", (req, res) => {
 app.use("/test", require("./test"));
 app.use("/test2", require("./test2"));
 
-app.use("/api", require("./question"));
+app.use("/question", require("./question"));
 app.use("/api", require("./like"));
 app.use("/api/oauth", require("./oauth"));
 mongoose
