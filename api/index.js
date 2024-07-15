@@ -39,6 +39,13 @@ mongoose
   .connect(process.env.DB, {})
   .then(() => console.log("connect to database"));
 
+app.use(express.static(path.resolve(__dirname, "./api")));
+
+// 이제 모든 주소는 리액트로 보냄
+app.get("*", function (request, response) {
+  response.sendFile(path.resolve(__dirname, "./api", "index.html"));
+});
+
 app.listen(PORT, () => {
   console.log(PORT, "번 포트에서 대기 중");
 });
