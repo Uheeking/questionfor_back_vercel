@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const LikeItem = require("../Models/like");
 
-router.post("/like/:id", async (req, res) => {
+router.post("/:id", async (req, res) => {
   //  #swagger.tags = ['Like API']
   //  #swagger.summary = 'id별 like하기'
   //  #swagger.description = 'id별로 좋아요, 삭제합니다.  '
@@ -34,7 +34,7 @@ router.post("/like/:id", async (req, res) => {
   }
 });
 
-router.get("/like", async (req, res) => {
+router.get("/", async (req, res) => {
   //  #swagger.tags = ['Like API']
   //  #swagger.summary = 'like 정보보기'
   //  #swagger.description = 'like를 한 유저의 정보를 가져옵니다. '

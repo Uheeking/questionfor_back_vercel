@@ -3,7 +3,6 @@ const app = express();
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-const question = require("./question");
 require("dotenv").config();
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
@@ -32,12 +31,10 @@ app.set("port", process.env.PORT || 3002);
 app.get("/", (req, res) => {
   res.send("Hello, Express");
 });
-app.use("/test", require("./test"));
-app.use("/test2", require("./test2"));
 
 app.use("/question", require("./question"));
-app.use("/api", require("./like"));
-app.use("/api/oauth", require("./oauth"));
+app.use("/like", require("./like"));
+app.use("/oauth", require("./oauth"));
 mongoose
   .connect(process.env.DB, {})
   .then(() => console.log("connect to database"));
