@@ -12,7 +12,7 @@ app.use(
     origin: function (origin, callback) {
       const allowedOrigins = [
         "http://localhost:3000",
-        "https://question-for.vercel.app/",
+        "https://question-for.vercel.app",
       ]; // Add other allowed origins if needed
       if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true);
