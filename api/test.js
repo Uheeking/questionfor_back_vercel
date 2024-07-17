@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const QuestionItem = require("../Models/question");
 
-router.get("/", async (req, res) => {
+router.get("/question", async (req, res) => {
   try {
     const question = await QuestionItem.find();
     console.log(question);
