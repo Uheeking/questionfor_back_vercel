@@ -31,9 +31,8 @@ app.set("port", process.env.PORT || 3002);
 app.get("/", (req, res) => {
   res.send("Hello, Express");
 });
-app.use("/api/", require("./test"))
-app.use("/question", require("./question"));
-app.use("/like", require("./like"));
+app.use("/api/question", require("./question"));
+app.use("/api/like", require("./like"));
 app.use("/oauth", require("./oauth"));
 mongoose
   .connect(process.env.DB, {})
