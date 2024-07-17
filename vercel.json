@@ -4,11 +4,7 @@
     {
       "source": "/(.*)",
       "destination": "/api"
-    },
-    {
-      "source": "/api/(.*)",
-      "destination": "/*"
-    }
+  }
   ],
   "headers": [
     {
